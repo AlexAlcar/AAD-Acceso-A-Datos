@@ -77,37 +77,33 @@ public class App {
 		File archivo=new File("carpeta/test.txt");
 		boolean menu=true;
 		int resp;
-		
-		while(menu=true) {
-			System.out.println("\n Introduce el número de comando que deseas ejecutar: \n 1: Mostrar información \n 2: Crear una carpeta \n 3: Crear un fichero \n 4: Eliminar un fichero/carpeta \n 5: Renombrar un archivo/carpeta");
+		while(menu==true) {
+			System.out.println("\n Introduce el número de comando que deseas ejecutar: \n 1: Mostrar información \n 2: Crear una carpeta \n 3: Crear un fichero \n 4: Eliminar un fichero/carpeta \n 5: Renombrar un archivo/carpeta \n 6: Salir" );
 			resp=entrada.nextInt();
 			switch(resp) {
 			case 1: 
 				getInformacion(carpeta);
-				menu=false;
 				break;
 			case 2: 
 				creaCarpeta();
-				menu=false;
 				break;
 			case 3:
 				creaFichero();
-				menu=false;
 				break;
 			case 4:
 				elimina();
-				menu=false;
 				break;
 			case 5:
 				renombra();
+				break;
+			case 6:
 				menu=false;
 				break;
 			default:
-				System.out.println("Introduce una opción válida \n 1: Mostrar información \n 2: Crear una carpeta \n 3: Crear un fichero \n 4: Eliminar un fichero/carpeta \n 5: Renombrar un archivo/carpeta");
+				System.out.println("Introduce una opción válida \n 1: Mostrar información \n 2: Crear una carpeta \n 3: Crear un fichero \n 4: Eliminar un fichero/carpeta \n 5: Renombrar un archivo/carpeta \n 6: Salir");
 				resp=entrada.nextInt();
 				break;
 			}
 		}
 	}
-
 }
