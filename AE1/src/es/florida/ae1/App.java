@@ -7,6 +7,9 @@ import java.util.Scanner;
 
 public class App {
 	public static void getInformacion() {
+		/*Nombre: getInformacion. Sin parámetros de entrada/salida
+		 USO: Pide al usuario el nombre de una carpeta o fichero y devuelve
+		 una serie de datos en función de si es una carpeta o un fichero */
 		Scanner entrada=new Scanner(System.in);	
 		System.out.print("Introduce el nombre del fichero/carpeta que quieres consultar ");
 		File f=new File(entrada.next());
@@ -35,6 +38,8 @@ public class App {
 	}
 	
 	public static void creaCarpeta() {
+		//Nombre:creaCarpeta. Sin parámetros de entrada/salida.
+		//USO: Solicita al usuario un nombre y crea una carpeta en raíz con el nombre introducido
 		Scanner entrada=new Scanner(System.in);	
 		System.out.print("Introduce el nombre de la carpeta que quieres crear ");
 		//creamos variable tipo file con el nombre que ha introducido el usuario
@@ -49,6 +54,8 @@ public class App {
 	}
 	
 	public static void creaFichero() {
+		/*Nombre: creaCarpeta. Sin parámetros de entrada/salida.
+		USO: Solicita al usuario un nombre y crea una carpeta en raíz con el nombre introducido*/
 		Scanner entrada=new Scanner(System.in);	
 		System.out.print("Introduce el nombre del fichero que quieres crear ");
 		File nuevoFichero=new File(entrada.next());
@@ -62,6 +69,8 @@ public class App {
 	}
 	
 	public static void elimina() {
+		/*Nombre: elimina. Sin parámetros de entrada/salida.
+		USO: Solicita al usuario un nombre de un archivo/carpeta ubicado en raíz y lo elimina*/
 		Scanner entrada=new Scanner(System.in);	
 		System.out.print("Introduce el nombre del fichero/carpeta que quieres eliminar ");
 		File nombre=new File(entrada.next());
@@ -71,6 +80,8 @@ public class App {
 	}
 	
 	public static void renombra() {
+		/*Nombre: renombra. Sin parámetros de entrada/salida.
+		USO: Solicita al usuario un nombre de archivo/carpeta y lo sustituye por un segundo nombre solicitado al usuario*/
 		Scanner entrada_resp=new Scanner(System.in);	
 		System.out.print("Introduce el nombre del fichero/carpeta que quieres renombrar ");
 		File oldFile=new File(entrada_resp.next());
