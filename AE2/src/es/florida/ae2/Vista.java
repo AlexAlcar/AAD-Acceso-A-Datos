@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 
 public class Vista {
+	/*gestiona la interfaz gráfica. Aquí se implementa el acceso a los componentes gráficos. 
+	 * Se proporciona una clase Vista.java con los componentes y métodos necesarios (figura 1), pero también se puede desarrollar una interfaz gráfica desde cero.*/
 
 	private JFrame frame;
 	private JTextField textField_Buscar;
