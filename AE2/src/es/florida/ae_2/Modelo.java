@@ -1,6 +1,5 @@
 package es.florida.ae_2;
 
-import java.io.BufferedWriter;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -14,31 +13,71 @@ public class Modelo {
 		fich_escritura="destino.txt";
 	}
 	
-	public ArrayList<String> contenidoFichero(String fichero){
+	public static ArrayList<String> contenidoFichero(String fichero){
 		//devuelve una lista de strings con el contenido del fichero (cada elemento es una linea)
+		ArrayList<String> lineasLeidas = new ArrayList<String>();
 		try {
 			FileReader fr = new FileReader(fichero);
 			BufferedReader br=new BufferedReader(fr);
+			String linea=br.readLine();
 			
+			while(linea!=null) {
+				lineasLeidas.add(linea);
+				linea=br.readLine();
+			}
 			
 			br.close();
 			fr.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return lineasLeidas;
 	}
 	
 	public String ficheroLectura() {
-		//Devuelve un string que contiene el nombre del fichero de lectura
-		
-		return null;
+		return fich_lectura;
 	}
 	
 	public String ficheroEscritura() {
-		//Devuelve un string con el fichero de escritura?
-		return null;
+		return fich_escritura;
 	}
 
+	public int buscarTexto(String texto) {
+		//Devuelve un entero con el numero de coincidencias del string en el contenido
+		Integer coincidencias=0;
+		ArrayList<String> lineasLeidas = new ArrayList<String>();
+		lineasLeidas=contenidoFichero(this.fich_lectura);
+		
+		for (String l : lineasLeidas) {
+			if(l.contains(texto)) coincidencias++;
+		}		
+		return coincidencias;
+	}
+	
+	public void reemplazarTexto(String textoBuscar, String textoReemplazar) {
+		//debe leer el contenido del fichero de lectura y reeemplazar las coincidencias que haya de textoBuscar con el string de textoReemplazar
+		//Usar replaceAll
+		
+		ArrayList<String> lineasLeidas = new ArrayList<String>();
+		ArrayList<String> lineasReemplazadas = new ArrayList<String>();
+		lineasLeidas=contenidoFichero(this.fich_lectura);
+		try {
+			FileWriter fw = new FileWriter(this.fich_escritura);
+			BufferedWriter bw=new BufferedWriter(fw);
+			
+			for (String l : lineasLeidas) {
+				//lineasReemplazadas.add(l.replaceAll(textoBuscar, textoReemplazar));
+				bw.write(l.replaceAll(textoBuscar, textoReemplazar));
+				bw.newLine();
+			}
+			bw.close();
+			fw.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		for (String linea : lineasReemplazadas) System.out.println(linea);
+	}
 }
