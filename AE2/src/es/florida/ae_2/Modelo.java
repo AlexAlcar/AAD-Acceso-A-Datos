@@ -78,6 +78,6 @@ public class Modelo {
 			e.printStackTrace();
 		}
 
-		for (String linea : lineasReemplazadas) System.out.println(linea);
+		//for (String linea : lineasReemplazadas) System.out.println(linea);
 	}
 }
