@@ -1,10 +1,10 @@
 package es.florida.ae03;
 
 public class Libro {
-	private int id, anyo,paginas;
+	private int id=0, anyo,paginas;
 	private String titulo, autor, editorial;
 	
-	public Libro(Integer id, Integer anyo, Integer paginas, String titulo, String autor, String editorial) {
+	public Libro(Integer id, String titulo, String autor, String editorial, Integer anyo, Integer paginas) {
 		this.id=id;
 		this.anyo=anyo;
 		this.paginas=paginas;
@@ -21,11 +21,11 @@ public class Libro {
 	public String getEditorial() { return editorial;}
 	
 	
-	int crearLibro (Libro libro) {
+	public int crearLibro (Libro libro) {
 		/**Crear un nuevo libro como un XML a partir de los datos proporcionados
 		 * por el usuario, devuelve el identificador del libro
 		 */
-		return 0;
+		return libro.id;
 	}
 	Libro recuperarLibro(int id) {
 		//devuelve un objeto libro a partir de un identificador.

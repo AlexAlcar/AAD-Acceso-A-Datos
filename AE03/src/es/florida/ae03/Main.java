@@ -4,31 +4,29 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Main {
+	public static int ID=0;
 	public static void preCrearLibro() {
 		System.out.println("\nVamos a añadir un nuevo libro a la biblioteca. \n");
 		Scanner sc= new Scanner(System.in);
-		//BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
-		
-		try {
-			/*System.out.print("Introduce el Titulo: ");
-			String titulo=reader.readLine();
-			System.out.print("Introduce el Autor: ");
-			String autor=reader.readLine();
-			System.out.print("Introduce la Editorial: ");
-			String editorial=reader.readLine();*/
-			System.out.print("Introduce el nº de páginas: ");
-			//Integer paginas=sc.nextInt();
-			if(sc.hasNextInt()) {
+			try {
+				System.out.print("Introduce el Titulo: ");
+				String titulo=sc.nextLine();
+				System.out.print("Introduce el Autor: ");
+				String autor=sc.nextLine();
+				System.out.print("Introduce la Editorial: ");
+				String editorial=sc.nextLine();
+				System.out.print("Introduce el nº de páginas: ");
 				Integer paginas=sc.nextInt();
+				System.out.print("Introduce el año de publicación: ");
+				Integer anyo=sc.nextInt();
+				
+				Libro l1=new Libro(ID++,titulo,autor,editorial,anyo,paginas);
+				System.out.println("\nLibro añadido correctamente!\n ");
+				//llamo a crearLibro para crear un XML
+				l1.crearLibro(l1);
+			}catch (Exception e) {
+				e.printStackTrace();
 			}
-			System.out.print("Introduce el año de publicación: ");
-			Integer anyo=sc.nextInt();
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
 	}
 
 	public static void main(String[] args) {
@@ -38,15 +36,11 @@ public class Main {
 	 * La info de cada libro se debe almacenar en un formato XML, puedes guardar
 	 * todos los libros en el mismo XML o en ficheros independientes.
 	 * 
-	 * Menu:
-	 * 
-	 * 
-	 * 6. Cerrar la biblioteca.
-	 * 
 	 * La opcion de mostrar todos los titulos solo muesta el ID y titulo
 	 * los XML resultantes deben tabular bien 
 	 */
 		Boolean menu=true;
+		Biblioteca biblioteca = new Biblioteca();
 		BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
 		while(menu) {
 			System.out.println("***Gestión de Biblioteca***");
