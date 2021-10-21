@@ -3,25 +3,33 @@
     <libro>
         <id>0</id>
         <titulo>Lo que el viento se llevó</titulo>
-        <autor>Facundo</autor>
-        <editorial>Ed. Anaya</editorial>
-        <año>1999</año>
+        <autor>Margaret Mitchell</autor>
+        <editorial>Macmillan Publishers</editorial>
+        <año>1936</año>
         <paginas>800</paginas>
+    </libro>
+    <libro>
+        <id>1</id>
+        <titulo>El Héroe de las Eras</titulo>
+        <autor>Brandon Sanderson</autor>
+        <editorial>Tor Books</editorial>
+        <año>2008</año>
+        <paginas>690</paginas>
     </libro>
     <libro>
         <id>2</id>
         <titulo>El nombre del viento</titulo>
-        <autor>N. Recuerdo</autor>
-        <editorial>Ed. Patata</editorial>
-        <año>1888</año>
-        <paginas>230</paginas>
+        <autor>Patrick Rothfuss</autor>
+        <editorial>Invent Editorial</editorial>
+        <año>2007</año>
+        <paginas>500</paginas>
     </libro>
     <libro>
-        <id>4</id>
-        <titulo>patata</titulo>
-        <autor>pasdp</autor>
-        <editorial>pqwe</editorial>
-        <año>4554</año>
-        <paginas>3</paginas>
+        <id>3</id>
+        <titulo>Dune</titulo>
+        <autor>Frank Herbert</autor>
+        <editorial>Invent Editorial</editorial>
+        <año>1965</año>
+        <paginas>800</paginas>
     </libro>
 </libros>

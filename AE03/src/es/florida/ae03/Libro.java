@@ -21,7 +21,6 @@ import org.w3c.dom.Element;
 public class Libro {
 	private int id=0, anyo,paginas;
 	private String titulo, autor, editorial;
-	
 	public Libro(Integer id, String titulo, String autor, String editorial, Integer anyo, Integer paginas) {
 		this.id=id;
 		this.anyo=anyo;
@@ -39,8 +38,11 @@ public class Libro {
 	
 	
 	public static void crearLibro (Biblioteca biblioteca) {
-		/**Crear un nuevo libro como un XML a partir de los datos proporcionados
-		 * por el usuario, devuelve el identificador del libro
+		/**
+		 * Nombre: crearLibro
+		 * Parámetro de entrada: un objeto de tipo biblioteca
+		 * Descripción: Genera una estructura de nodos y crea un XML con el contenido de la lista de libros del objeto biblioteca que recibe como parámetro.
+		 * Sin parámetros de salida.
 		 */
 		try {			
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -50,7 +52,6 @@ public class Libro {
 			Element raiz=doc.createElement("libros");
 			doc.appendChild(raiz);
 			for(Libro li : Biblioteca.getListaLibros()) {
-
 				Element libro = doc.createElement("libro");
 				raiz.appendChild(libro);
 				
@@ -80,25 +81,20 @@ public class Libro {
 			
 			}
 			//Guardar documento en disco
-			//Crear serializador
 			TransformerFactory tranFactory=TransformerFactory.newInstance();
 			Transformer aTransformer = tranFactory.newTransformer();
-			
-			//Darle formato al documento
 			aTransformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
 			aTransformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount","4");
 			aTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			DOMSource source = new DOMSource(doc);
 			try {
-				//Definir el nombre del fichero y guardar
 				FileWriter fw = new FileWriter("libros.xml");
 				StreamResult result = new StreamResult(fw);
-				aTransformer.transform(source, result);//aqui se hace la escritura
+				aTransformer.transform(source, result);
 				fw.close();
 			}catch (IOException e) {
 				e.printStackTrace();
 			}
-			
 			
 		}catch (TransformerException ex) {
 			System.out.println("Error escribiendo el documento");
@@ -107,10 +103,13 @@ public class Libro {
 		}
 	}
 	
-	
 	static Libro recuperarLibro(int id) {
-		//devuelve un objeto libro a partir de un identificador.
-		//esto se puede aplicar a los mñétodos pre... (futura mejora)
+		/**
+		 * Nombre: recuperarLibro.
+		 * Parámetro de entrada: identificador de libro (Integer)
+		 * Parámetro de salida: Un objeto de tipo Libro
+		 * Descripción: Devuelve el libro de la biblioteca cuyo ID coincide con el que se recibe por parámetro.
+		 */
 		for (Libro li : Biblioteca.getListaLibros()){
 			if (li.getId()==id) return li;
 			else System.out.println("No se ha encontrado ningun libro con ese ID, introduce otro ID");
@@ -119,7 +118,11 @@ public class Libro {
 	
 	
 	static void mostrarLibro (Libro libro) {
-		//muestra los atributos del libro por pantalla
+		/**
+		 * Nombre: mostrarLibro
+		 * Parámetro de entrada: Un objeto de tipo Libro
+		 * Descripción: Imprime por consola la información estructurada del objeto de tipo Libro recibido por parámetro.
+		 */
 		System.out.println("Mostrando información sobre el libro seleccionado...");
 		System.out.println("ID: "+libro.getId());
 		System.out.println("Título: "+libro.getTitulo());
@@ -127,14 +130,18 @@ public class Libro {
 		System.out.println("Editorial: "+libro.getEditorial());
 		System.out.println("Nº Páginas: "+libro.getPaginas());
 		System.out.println("Año de publicación: "+libro.getAnyo()+"\n");
-		
 	}
 	
 	static void actualizaLibro (int id) {
-		//actualiza (modifica) la info de un objeto libro a partir de un ID
+		/**
+		 * Nombre: actualizaLibro
+		 * Parámetro de entrada: id de libro (Integer)
+		 * Descripción: Crea un nuevo objeto de tipo Libro con los parámetros introducidos por el usuario
+		 * y reemplaza el registro cuyo id coincide con el que se ha recibido por parámetro.
+		 * 
+		 */
 		for (Libro li:Biblioteca.getListaLibros()) {
 			if (li.getId()==id) {
-				///modificar datos
 				System.out.println("\nIntroduce los nuevos datos del libro "+li.getTitulo());
 				Scanner sc= new Scanner(System.in);
 					try {
@@ -149,24 +156,22 @@ public class Libro {
 						System.out.print("Introduce el nuevo año de publicación: ");
 						Integer anyo=sc.nextInt();
 						
-						//list.set( 2, "New" );
 						Libro l1=new Libro(id,titulo,autor,editorial,anyo,paginas);
 						Biblioteca.getListaLibros().set(id, l1);
-						
 						System.out.println("\nLibro modificado correctamente!\n ");
-						//llamo a crearLibro para crear un XML
-						//l1.crearLibro();
-						//sc.close();
 					}catch (Exception e) {
 						e.printStackTrace();
 					}
-				
 			}
 		}
-		
 	}
 	static List<Libro> recuperarTodos(){
-		//devuelve una lista con todos los libros de la biblioteca
+		/**
+		 * Nombe: recuperarTodos
+		 * Parámetro de salida: una lista de objetos de tipo libro
+		 * Sin parámetros de entrada
+		 * Descripción: Devuelve una lsita de objetos de tipo libro.
+		 */
 		return Biblioteca.getListaLibros();
 	}
 }
