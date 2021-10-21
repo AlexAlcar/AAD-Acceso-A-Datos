@@ -9,27 +9,19 @@
         <paginas>800</paginas>
     </libro>
     <libro>
-        <id>1</id>
-        <titulo>El Héroe de las Eras</titulo>
-        <autor>B. Sanderson</autor>
-        <editorial>Ed. Salvat</editorial>
-        <año>2002</año>
-        <paginas>990</paginas>
-    </libro>
-    <libro>
         <id>2</id>
-        <titulo>t1</titulo>
-        <autor>a1</autor>
-        <editorial>e1</editorial>
-        <año>33434</año>
-        <paginas>123</paginas>
+        <titulo>El nombre del viento</titulo>
+        <autor>N. Recuerdo</autor>
+        <editorial>Ed. Patata</editorial>
+        <año>1888</año>
+        <paginas>230</paginas>
     </libro>
     <libro>
-        <id>3</id>
-        <titulo>t2</titulo>
-        <autor>a2</autor>
-        <editorial>e2</editorial>
-        <año>35443</año>
-        <paginas>134</paginas>
+        <id>4</id>
+        <titulo>patata</titulo>
+        <autor>pasdp</autor>
+        <editorial>pqwe</editorial>
+        <año>4554</año>
+        <paginas>3</paginas>
     </libro>
 </libros>

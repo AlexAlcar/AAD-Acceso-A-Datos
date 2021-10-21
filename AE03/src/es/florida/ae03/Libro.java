@@ -121,9 +121,7 @@ public class Libro {
 		System.out.println("Año de publicación: "+libro.getAnyo()+"\n");
 		
 	}
-	void borrarLibro(int id) {
-		//borra un objeto libro a partir de un ID
-	}
+	
 	void actualizaLibro (int id) {
 		//actualiza (modifica) la info de un objeto libro a partir de un ID
 	}

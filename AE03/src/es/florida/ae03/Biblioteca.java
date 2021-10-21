@@ -13,6 +13,10 @@ public class Biblioteca {
 		lista.add(li);
 	}
 	
+	public static void borrarLibro (int id) {
+		lista.remove(id);
+	}
+	
 	public static List<Libro> getListaLibros(){
 		return lista;
 	}

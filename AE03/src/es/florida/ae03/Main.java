@@ -36,7 +36,7 @@ public class Main {
 			return null;
 	}
 	
-	public static void preMostrarlibro(Biblioteca biblio) {
+	public static void preMostrarlibro() {
 		//le pide el ID al usuario y busca en la Biblioteca el libro que coincide en ID
 		Boolean bucle=true;
 		Boolean encontrado=false;
@@ -52,6 +52,32 @@ public class Main {
 						bucle=false;
 						encontrado=true;
 						Libro.mostrarLibro(li);
+						break;
+					}
+				}
+				if(!encontrado)System.out.println("No se ha encontrado ningun libro con ese ID, introduce otro ID");
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void preBorrarlibro() {
+		//le pide el ID al usuario y elimina de la  Biblioteca el libro que coincide en ID
+		Boolean bucle=true;
+		Boolean encontrado=false;
+		System.out.println("\nIntroduce un ID para borrar de tu biblioteca. \n");
+		try {
+			while(bucle) {
+				BufferedReader sc=new BufferedReader(new InputStreamReader(System.in));				
+				Integer id=Integer.parseInt(sc.readLine());
+				List<Libro> lista=Biblioteca.getListaLibros();
+				for(Libro li : lista) {
+					//System.out.println("Comparo "+id+" con "+li.getId());
+					if (li.getId()==id) {
+						bucle=false;
+						encontrado=true;
+						Biblioteca.borrarLibro(id);
 						break;
 					}
 				}
@@ -98,7 +124,7 @@ public class Main {
 						}
 					break;
 				case "2":
-					preMostrarlibro(biblio);
+					preMostrarlibro();
 					break;
 				case "3":
 					biblio.anyadirLibro(preCrearLibro());
@@ -108,7 +134,8 @@ public class Main {
 					System.out.println("OK");
 					break;
 				case "5":
-					System.out.println("OK");
+					preBorrarlibro();
+					Libro.crearLibro(biblio);
 					break;
 				case "6":
 					System.out.println("Adiós");
