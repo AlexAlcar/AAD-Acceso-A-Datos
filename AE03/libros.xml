@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<libros>
+    <libro>
+        <id>1</id>
+        <titulo>Libro2</titulo>
+        <autor>Autor2</autor>
+        <editorial>Editorial2</editorial>
+        <año>2000</año>
+        <paginas>454</paginas>
+    </libro>
+</libros>

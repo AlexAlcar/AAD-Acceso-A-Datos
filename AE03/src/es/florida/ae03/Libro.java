@@ -1,5 +1,22 @@
 package es.florida.ae03;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 public class Libro {
 	private int id=0, anyo,paginas;
 	private String titulo, autor, editorial;
@@ -21,11 +38,74 @@ public class Libro {
 	public String getEditorial() { return editorial;}
 	
 	
-	public int crearLibro (Libro libro) {
+	public int crearLibro (Libro li) {
 		/**Crear un nuevo libro como un XML a partir de los datos proporcionados
 		 * por el usuario, devuelve el identificador del libro
 		 */
-		return libro.id;
+		try {			
+			System.out.println(Integer.toString(li.getId()));
+			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+			Document doc=dBuilder.newDocument();
+			
+			Element raiz=doc.createElement("libros");
+			doc.appendChild(raiz);
+			
+			Element libro = doc.createElement("libro");
+			raiz.appendChild(libro);
+			
+			Element id=doc.createElement("id");
+			id.appendChild(doc.createTextNode(Integer.toString(li.getId())));
+			libro.appendChild(id);
+			
+			Element titulo=doc.createElement("titulo");
+			titulo.appendChild(doc.createTextNode(li.getTitulo()));
+			libro.appendChild(titulo);
+			
+			Element autor=doc.createElement("autor");
+			autor.appendChild(doc.createTextNode(li.getAutor()));
+			libro.appendChild(autor);
+			
+			Element editorial=doc.createElement("editorial");
+			editorial.appendChild(doc.createTextNode(li.getEditorial()));
+			libro.appendChild(editorial);
+			
+			Element anyo=doc.createElement("año");
+			anyo.appendChild(doc.createTextNode(Integer.toString(li.getAnyo())));
+			libro.appendChild(anyo);
+			
+			Element paginas=doc.createElement("paginas");
+			paginas.appendChild(doc.createTextNode(Integer.toString(li.getPaginas())));
+			libro.appendChild(paginas);
+			
+			//Guardar documento en disco
+			//Crear serializador
+			TransformerFactory tranFactory=TransformerFactory.newInstance();
+			Transformer aTransformer = tranFactory.newTransformer();
+			
+			//Darle formato al documento
+			aTransformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+			aTransformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount","4");
+			aTransformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			DOMSource source = new DOMSource(doc);
+			try {
+				//Definir el nombre del fichero y guardar
+				FileWriter fw = new FileWriter("libros.xml");
+				StreamResult result = new StreamResult(fw);
+				aTransformer.transform(source, result);//aqui se hace la escritura
+				fw.close();
+			}catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
+		}catch (TransformerException ex) {
+			System.out.println("Error escribiendo el documento");
+		}catch(ParserConfigurationException ex) {
+			System.out.println("Error construyendo el documento");
+		}
+		
+		return li.id;
 	}
 	Libro recuperarLibro(int id) {
 		//devuelve un objeto libro a partir de un identificador.
@@ -40,8 +120,8 @@ public class Libro {
 	void actualizaLibro (int id) {
 		//actualiza (modifica) la info de un objeto libro a partir de un ID
 	}
-	/*ArrayList<Libro> recuperarTodos(){
-		//devuelve una lsita con todos los libros de la biblioteca
-	}*/
-	
+	static List<Libro> recuperarTodos(){
+		//devuelve una lista con todos los libros de la biblioteca
+		return Biblioteca.getListaLibros();
+	}
 }

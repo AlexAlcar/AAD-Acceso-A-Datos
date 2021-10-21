@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class Biblioteca {
-	private List<Libro> lista = new ArrayList<Libro>();
+	private static List<Libro> lista = new ArrayList<Libro>();
 	
 	public Biblioteca() {}
 	
@@ -13,7 +13,7 @@ public class Biblioteca {
 		lista.add(li);
 	}
 	
-	public List<Libro> getListaLibros(){
+	public static List<Libro> getListaLibros(){
 		return lista;
 	}
 }
