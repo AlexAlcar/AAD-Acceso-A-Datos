@@ -3,6 +3,7 @@ package es.florida.ae03;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -29,7 +30,6 @@ public class Libro {
 		this.autor=autor;
 		this.editorial=editorial;
 	}
-	//Getters
 	public Integer getId() { return id; }
 	public Integer getAnyo() { return anyo; }
 	public Integer getPaginas() { return paginas; }
@@ -106,10 +106,18 @@ public class Libro {
 			System.out.println("Error construyendo el documento");
 		}
 	}
-	Libro recuperarLibro(int id) {
+	
+	
+	static Libro recuperarLibro(int id) {
 		//devuelve un objeto libro a partir de un identificador.
-		return null;
+		//esto se puede aplicar a los mñétodos pre... (futura mejora)
+		for (Libro li : Biblioteca.getListaLibros()){
+			if (li.getId()==id) return li;
+			else System.out.println("No se ha encontrado ningun libro con ese ID, introduce otro ID");
+		}return null;
 	}
+	
+	
 	static void mostrarLibro (Libro libro) {
 		//muestra los atributos del libro por pantalla
 		System.out.println("Mostrando información sobre el libro seleccionado...");
@@ -122,8 +130,40 @@ public class Libro {
 		
 	}
 	
-	void actualizaLibro (int id) {
+	static void actualizaLibro (int id) {
 		//actualiza (modifica) la info de un objeto libro a partir de un ID
+		for (Libro li:Biblioteca.getListaLibros()) {
+			if (li.getId()==id) {
+				///modificar datos
+				System.out.println("\nIntroduce los nuevos datos del libro "+li.getTitulo());
+				Scanner sc= new Scanner(System.in);
+					try {
+						System.out.print("Introduce el nuevo Titulo: ");
+						String titulo=sc.nextLine();
+						System.out.print("Introduce el nuevo Autor: ");
+						String autor=sc.nextLine();
+						System.out.print("Introduce la nueva Editorial: ");
+						String editorial=sc.nextLine();
+						System.out.print("Introduce el nuevo nº de páginas: ");
+						Integer paginas=sc.nextInt();
+						System.out.print("Introduce el nuevo año de publicación: ");
+						Integer anyo=sc.nextInt();
+						
+						//list.set( 2, "New" );
+						Libro l1=new Libro(id,titulo,autor,editorial,anyo,paginas);
+						Biblioteca.getListaLibros().set(id, l1);
+						
+						System.out.println("\nLibro modificado correctamente!\n ");
+						//llamo a crearLibro para crear un XML
+						//l1.crearLibro();
+						//sc.close();
+					}catch (Exception e) {
+						e.printStackTrace();
+					}
+				
+			}
+		}
+		
 	}
 	static List<Libro> recuperarTodos(){
 		//devuelve una lista con todos los libros de la biblioteca

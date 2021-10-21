@@ -73,7 +73,6 @@ public class Main {
 				Integer id=Integer.parseInt(sc.readLine());
 				List<Libro> lista=Biblioteca.getListaLibros();
 				for(Libro li : lista) {
-					//System.out.println("Comparo "+id+" con "+li.getId());
 					if (li.getId()==id) {
 						bucle=false;
 						encontrado=true;
@@ -87,21 +86,39 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void preActualizarlibro() {
+		Boolean bucle=true;
+		Boolean encontrado=false;
+		System.out.println("\nIntroduce un ID para actualizar sus datos. \n");
+		try {
+			while(bucle) {
+				BufferedReader sc=new BufferedReader(new InputStreamReader(System.in));				
+				Integer id=Integer.parseInt(sc.readLine());
+				List<Libro> lista=Biblioteca.getListaLibros();
+				for(Libro li : lista) {
+					if (li.getId()==id) {
+						bucle=false;
+						encontrado=true;
+						Libro.actualizaLibro(id);
+						break;
+					}
+				}
+				if(!encontrado)System.out.println("No se ha encontrado ningun libro con ese ID, introduce otro ID");
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) {
-	/*
-	 * Gestionar biblioteca de libros (mínimo 5), para esto se crea una clase
-	 * Biblioteca.
-	 * 
-	 */
+	/*******/
 		Boolean menu=true;
 		Biblioteca biblio = new Biblioteca();
-		//creamos 3 libros de test
 		Libro l1 = new Libro(ID++,"Lo que el viento se llevó", "Facundo", "Ed. Anaya", 1999,800);
 		Libro l2 = new Libro(ID++,"El Héroe de las Eras", "B. Sanderson", "Ed. Salvat", 2002,990);
 		Libro l3 = new Libro(ID++,"El nombre del viento", "N. Recuerdo", "Ed. Patata", 1888,230);
 		biblio.anyadirLibro(l1);biblio.anyadirLibro(l2);biblio.anyadirLibro(l3);
-		//List<Libro> listaLibros = Libro.recuperarTodos();
 		
 		BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
 		while(menu) {
@@ -131,7 +148,8 @@ public class Main {
 					Libro.crearLibro(biblio);
 					break;
 				case "4":
-					System.out.println("OK");
+					preActualizarlibro();
+					//Libro.crearLibro(biblio);
 					break;
 				case "5":
 					preBorrarlibro();
@@ -146,14 +164,9 @@ public class Main {
 					break;
 				}
 				
-				
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
 		}
-		
-		
 	}
-
 }
