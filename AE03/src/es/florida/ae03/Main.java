@@ -26,7 +26,8 @@ public class Main {
 				Libro l1=new Libro(ID++,titulo,autor,editorial,anyo,paginas);
 				System.out.println("\nLibro añadido correctamente!\n ");
 				//llamo a crearLibro para crear un XML
-				l1.crearLibro(l1);
+				//l1.crearLibro();
+				//sc.close();
 				return l1;
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -34,24 +35,47 @@ public class Main {
 			
 			return null;
 	}
+	
+	public static void preMostrarlibro(Biblioteca biblio) {
+		//le pide el ID al usuario y busca en la Biblioteca el libro que coincide en ID
+		Boolean bucle=true;
+		Boolean encontrado=false;
+		System.out.println("\nIntroduce un ID para ver información detallada. \n");
+		try {
+			while(bucle) {
+				BufferedReader sc=new BufferedReader(new InputStreamReader(System.in));				
+				Integer id=Integer.parseInt(sc.readLine());
+				List<Libro> lista=Biblioteca.getListaLibros();
+				for(Libro li : lista) {
+					//System.out.println("Comparo "+id+" con "+li.getId());
+					if (li.getId()==id) {
+						bucle=false;
+						encontrado=true;
+						Libro.mostrarLibro(li);
+						break;
+					}
+				}
+				if(!encontrado)System.out.println("No se ha encontrado ningun libro con ese ID, introduce otro ID");
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public static void main(String[] args) {
 	/*
 	 * Gestionar biblioteca de libros (mínimo 5), para esto se crea una clase
 	 * Biblioteca.
-	 * La info de cada libro se debe almacenar en un formato XML, puedes guardar
-	 * todos los libros en el mismo XML o en ficheros independientes.
 	 * 
-	 * La opcion de mostrar todos los titulos solo muesta el ID y titulo
-	 * los XML resultantes deben tabular bien 
 	 */
 		Boolean menu=true;
-		Biblioteca biblioteca = new Biblioteca();
-		//creamos 2 libros de test
-		Libro l1 = new Libro(0,"Lo que el viento se llevó", "Facundo", "Ed. Anaya", 1999,800);
-		Libro l2 = new Libro(1,"El Héroe de las Eras", "B. Sanderson", "Ed. Salvat", 2002,990);
-		biblioteca.anyadirLibro(l1);
-		biblioteca.anyadirLibro(l2);
+		Biblioteca biblio = new Biblioteca();
+		//creamos 3 libros de test
+		Libro l1 = new Libro(ID++,"Lo que el viento se llevó", "Facundo", "Ed. Anaya", 1999,800);
+		Libro l2 = new Libro(ID++,"El Héroe de las Eras", "B. Sanderson", "Ed. Salvat", 2002,990);
+		Libro l3 = new Libro(ID++,"El nombre del viento", "N. Recuerdo", "Ed. Patata", 1888,230);
+		biblio.anyadirLibro(l1);biblio.anyadirLibro(l2);biblio.anyadirLibro(l3);
+		//List<Libro> listaLibros = Libro.recuperarTodos();
 		
 		BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
 		while(menu) {
@@ -67,18 +91,18 @@ public class Main {
 				String resp=reader.readLine();
 				switch(resp) {
 				case "1":
-					List<Libro> listaLibros = Libro.recuperarTodos();
 					System.out.println("\nMostrando librería...");
-					for (Libro li : listaLibros) {
+					for (Libro li : Biblioteca.getListaLibros()) {
 						System.out.println("ID: "+li.getId());
 						System.out.println("Titulo: "+li.getTitulo()+"\n");
 						}
 					break;
 				case "2":
-					System.out.println("OK");
+					preMostrarlibro(biblio);
 					break;
 				case "3":
-					biblioteca.anyadirLibro(preCrearLibro());
+					biblio.anyadirLibro(preCrearLibro());
+					Libro.crearLibro(biblio);
 					break;
 				case "4":
 					System.out.println("OK");

@@ -38,46 +38,47 @@ public class Libro {
 	public String getEditorial() { return editorial;}
 	
 	
-	public int crearLibro (Libro li) {
+	public static void crearLibro (Biblioteca biblioteca) {
 		/**Crear un nuevo libro como un XML a partir de los datos proporcionados
 		 * por el usuario, devuelve el identificador del libro
 		 */
 		try {			
-			System.out.println(Integer.toString(li.getId()));
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc=dBuilder.newDocument();
 			
 			Element raiz=doc.createElement("libros");
 			doc.appendChild(raiz);
+			for(Libro li : Biblioteca.getListaLibros()) {
+
+				Element libro = doc.createElement("libro");
+				raiz.appendChild(libro);
+				
+				Element id=doc.createElement("id");
+				id.appendChild(doc.createTextNode(Integer.toString(li.getId())));
+				libro.appendChild(id);
+				
+				Element titulo=doc.createElement("titulo");
+				titulo.appendChild(doc.createTextNode(li.getTitulo()));
+				libro.appendChild(titulo);
+				
+				Element autor=doc.createElement("autor");
+				autor.appendChild(doc.createTextNode(li.getAutor()));
+				libro.appendChild(autor);
+				
+				Element editorial=doc.createElement("editorial");
+				editorial.appendChild(doc.createTextNode(li.getEditorial()));
+				libro.appendChild(editorial);
+				
+				Element anyo=doc.createElement("año");
+				anyo.appendChild(doc.createTextNode(Integer.toString(li.getAnyo())));
+				libro.appendChild(anyo);
+				
+				Element paginas=doc.createElement("paginas");
+				paginas.appendChild(doc.createTextNode(Integer.toString(li.getPaginas())));
+				libro.appendChild(paginas);
 			
-			Element libro = doc.createElement("libro");
-			raiz.appendChild(libro);
-			
-			Element id=doc.createElement("id");
-			id.appendChild(doc.createTextNode(Integer.toString(li.getId())));
-			libro.appendChild(id);
-			
-			Element titulo=doc.createElement("titulo");
-			titulo.appendChild(doc.createTextNode(li.getTitulo()));
-			libro.appendChild(titulo);
-			
-			Element autor=doc.createElement("autor");
-			autor.appendChild(doc.createTextNode(li.getAutor()));
-			libro.appendChild(autor);
-			
-			Element editorial=doc.createElement("editorial");
-			editorial.appendChild(doc.createTextNode(li.getEditorial()));
-			libro.appendChild(editorial);
-			
-			Element anyo=doc.createElement("año");
-			anyo.appendChild(doc.createTextNode(Integer.toString(li.getAnyo())));
-			libro.appendChild(anyo);
-			
-			Element paginas=doc.createElement("paginas");
-			paginas.appendChild(doc.createTextNode(Integer.toString(li.getPaginas())));
-			libro.appendChild(paginas);
-			
+			}
 			//Guardar documento en disco
 			//Crear serializador
 			TransformerFactory tranFactory=TransformerFactory.newInstance();
@@ -104,15 +105,21 @@ public class Libro {
 		}catch(ParserConfigurationException ex) {
 			System.out.println("Error construyendo el documento");
 		}
-		
-		return li.id;
 	}
 	Libro recuperarLibro(int id) {
 		//devuelve un objeto libro a partir de un identificador.
 		return null;
 	}
-	void mostrarLibro (Libro libro) {
+	static void mostrarLibro (Libro libro) {
 		//muestra los atributos del libro por pantalla
+		System.out.println("Mostrando información sobre el libro seleccionado...");
+		System.out.println("ID: "+libro.getId());
+		System.out.println("Título: "+libro.getTitulo());
+		System.out.println("Autor: "+libro.getAutor());
+		System.out.println("Editorial: "+libro.getEditorial());
+		System.out.println("Nº Páginas: "+libro.getPaginas());
+		System.out.println("Año de publicación: "+libro.getAnyo()+"\n");
+		
 	}
 	void borrarLibro(int id) {
 		//borra un objeto libro a partir de un ID

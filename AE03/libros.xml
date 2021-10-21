@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
 <libros>
     <libro>
+        <id>0</id>
+        <titulo>Lo que el viento se llevó</titulo>
+        <autor>Facundo</autor>
+        <editorial>Ed. Anaya</editorial>
+        <año>1999</año>
+        <paginas>800</paginas>
+    </libro>
+    <libro>
         <id>1</id>
-        <titulo>Libro2</titulo>
-        <autor>Autor2</autor>
-        <editorial>Editorial2</editorial>
-        <año>2000</año>
-        <paginas>454</paginas>
+        <titulo>El Héroe de las Eras</titulo>
+        <autor>B. Sanderson</autor>
+        <editorial>Ed. Salvat</editorial>
+        <año>2002</año>
+        <paginas>990</paginas>
+    </libro>
+    <libro>
+        <id>2</id>
+        <titulo>t1</titulo>
+        <autor>a1</autor>
+        <editorial>e1</editorial>
+        <año>33434</año>
+        <paginas>123</paginas>
+    </libro>
+    <libro>
+        <id>3</id>
+        <titulo>t2</titulo>
+        <autor>a2</autor>
+        <editorial>e2</editorial>
+        <año>35443</año>
+        <paginas>134</paginas>
     </libro>
 </libros>
