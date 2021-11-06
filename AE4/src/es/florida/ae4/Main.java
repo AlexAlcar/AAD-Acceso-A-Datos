@@ -9,7 +9,8 @@ public class Main {
 		/**
 		 * Nombre: launchQuery
 		 * Sin parámetros de entrada/salida
-		 * Descripción: Permite al usuario introducir una consulta SQL y lanzarla sobre la tabla libros
+		 * Descripción: Permite al usuario introducir una consulta SQL y lanzarla sobre la tabla libros. 
+		 * Después muestra los resultados formateados por consola
 		 */
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/biblioteca","root","");
@@ -18,9 +19,18 @@ public class Main {
 		System.out.println("Introduce la sentencia de la consulta SQL:");
 		PreparedStatement query=con.prepareStatement(teclado.nextLine());
 		
-		System.out.println(query);
-		//query.executeQuery();
+		ResultSet r=query.executeQuery();
+		ResultSetMetaData meta=r.getMetaData();
 		
+		for(int i=1;i<=meta.getColumnCount();i++) {
+			//generamos los nombres de las columnas
+			System.out.format("%30s",meta.getColumnName(i));
+		}
+		System.out.println("");
+		while (r.next()) {
+			for(int i=1;i<=meta.getColumnCount();i++)System.out.format("%30s",r.getString(i));
+			System.out.println("");
+		}
 	}
 	
 	public static void createTable() throws ClassNotFoundException, IOException {
@@ -112,9 +122,7 @@ public class Main {
 		con.close();
 		resul.close();
 		resul2.close();
-		
 	}
-	
 
 	public static void main(String[] args) throws Exception {
 		Boolean menu=true;
@@ -130,7 +138,5 @@ public class Main {
 			else if(opcion.equals(5)) menu=false;
 			else System.err.println("Opción inválida");
 		}
-		
-		
 	}
 }
