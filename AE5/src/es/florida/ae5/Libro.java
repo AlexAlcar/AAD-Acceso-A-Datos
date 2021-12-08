@@ -1,7 +1,7 @@
 package es.florida.ae5;
 
 public class Libro {
-	private int id;
+	public int id;
 	private String titulo;
 	private String autor;
 	private String fecha_nacimiento;
@@ -14,6 +14,16 @@ public class Libro {
 	}
 	
 	public Libro (String titulo, String autor, String fecha_nacimiento, int fecha_publicacion, String editorial, int paginas) {
+		this.titulo=titulo;
+		this.autor=autor;
+		this.fecha_nacimiento = fecha_nacimiento;
+		this.fecha_publicacion =fecha_publicacion;
+		this.editorial=editorial;
+		this.paginas=paginas;
+	}
+	
+	public Libro (int id, String titulo, String autor, String fecha_nacimiento, int fecha_publicacion, String editorial, int paginas) {
+		this.id=id;
 		this.titulo=titulo;
 		this.autor=autor;
 		this.fecha_nacimiento = fecha_nacimiento;
