@@ -17,27 +17,42 @@ import org.hibernate.service.ServiceRegistry;
 
 public class Main {
 	
-	public static void mostrarLibros(Session session) {
+	public static void mostrarLibros() {
 		/**
 		 * Nombre: mostrarLibros
 		 * Parámetro de entrada: un objeto de tipo Session
 		 * Descripción: Imprime por consola el valor de las columnas ID y Título de todos los elementos de la tabla.
 		 */
+		Configuration configuration= new Configuration().configure("hibernate.cfg.xml");
+		configuration.addClass(Libro.class);
+		ServiceRegistry registry= new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+		SessionFactory sessionFactory= configuration.buildSessionFactory(registry);
+		Session session= sessionFactory.openSession();
+		session.beginTransaction();
+		
 		List listaLibros = new ArrayList();
 		listaLibros=session.createQuery("FROM Libro").list();
 		for(Object obj : listaLibros) {
 			Libro li=(Libro)obj;
 			System.out.println("ID: "+li.getId()+" Título: "+li.getTitulo());
 		}
-		System.err.println("Volviendo al menú principal...\n");
+		System.out.println("Volviendo al menú principal...\n");
+		session.close();
 	}
 
-	public static void mostrarLibro(Session session) {
+	public static void mostrarLibro() {
 		/**
 		 * Nombre: mostrarLibro
 		 * Parámetro de entrada: un objeto de tipo Session
 		 * Descripción: Solicita al usuario un ID de libro, comprueba que existe y muestra por pantalla la información del mismo.
 		 */
+		Configuration configuration= new Configuration().configure("hibernate.cfg.xml");
+		configuration.addClass(Libro.class);
+		ServiceRegistry registry= new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+		SessionFactory sessionFactory= configuration.buildSessionFactory(registry);
+		Session session= sessionFactory.openSession();
+		session.beginTransaction();
+		
 		System.out.println("\nIntroduce un ID para ver información detallada. \n");
 			try {
 				BufferedReader sc=new BufferedReader(new InputStreamReader(System.in));				
@@ -56,14 +71,21 @@ public class Main {
 				e.printStackTrace();
 			}	
 			System.err.println("Volviendo al menú principal...\n");
+			session.close();
 		}
 	
-	public static void crearLibro(Session session) {
+	public static void crearLibro() {
 		/**
 		 * Nombre: crearLibro
 		 * Parámetro de entrada: un objeto de tipo Session
 		 * Descripción: Recoge los datos introducidos por el usuario, crea un objeto de tipo Libro y lo inserta en la tabla libros
 		 */
+		Configuration configuration= new Configuration().configure("hibernate.cfg.xml");
+		configuration.addClass(Libro.class);
+		ServiceRegistry registry= new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+		SessionFactory sessionFactory= configuration.buildSessionFactory(registry);
+		Session session= sessionFactory.openSession();
+		session.beginTransaction();
 		System.out.println("\nVamos a añadir un nuevo libro a la biblioteca. \n");
 		BufferedReader sc=new BufferedReader(new InputStreamReader(System.in));						
 			try {
@@ -88,16 +110,23 @@ public class Main {
 
 			}catch (Exception e) { e.printStackTrace();	}
 			session.getTransaction().commit();
+			session.close();
 			System.err.println("Volviendo al menú principal...\n");
 	}
 	
-	public static void actualizarLibro(Session session) {
+	public static void actualizarLibro() {
 		/**
 		 * Nombre: preActualizarLibro
-		 * Descripción: Solicita al usuario un ID de libro, comprueba que existe y llama al método actualizaLibro pasándole
-		 * como parámetro ese ID. En caso de que no exista informa al usuario y le pide de nuevo que introduzca el ID.
+		 * Descripción: Solicita al usuario un ID de libro, comprueba que existe y actualiza sus datos en base a los parámetros del usuario
 		 * Sin parámetros de entrada/salida.
 		 */
+		Configuration configuration= new Configuration().configure("hibernate.cfg.xml");
+		configuration.addClass(Libro.class);
+		ServiceRegistry registry= new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+		SessionFactory sessionFactory= configuration.buildSessionFactory(registry);
+		Session session= sessionFactory.openSession();
+		session.beginTransaction();
+		
 		Boolean encontrado=false;
 		System.out.println("\nIntroduce un ID para actualizar sus datos. \n");
 		BufferedReader sc=new BufferedReader(new InputStreamReader(System.in));				
@@ -112,7 +141,7 @@ public class Main {
 				if(li.getId()==id)encontrado=true;
 			}
 			
-			if(encontrado=false) System.err.println("No existe un libro con el ID indicado.");
+			if(encontrado==false) System.err.println("No existe un libro con el ID indicado.");
 			else {
 				System.out.print("Introduce el nuevo Titulo: ");
 				String titulo=sc.readLine();
@@ -136,29 +165,67 @@ public class Main {
 				li.setFecha_publicacion(anyo);
 				session.update(li);
 				System.out.println("Libro actualizado!!");
-				
-				
-				
-				
 			}
 			
 		} catch (NumberFormatException | IOException e) { e.printStackTrace(); }
-		
-		
-		
+
+		session.getTransaction().commit();
+		session.close();
 	}
 	
-	public static void main(String[] args) {
-		Boolean menu=true;
-		//config
+	public static void borrarLibro() {
+		/**
+		 * Nombre: borrarLibro
+		 * Descripción: Solicita al usuario un ID de libro, comprueba que existe y lo borra
+		 * Sin parámetros de entrada/salida.
+		 */
 		Configuration configuration= new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Libro.class);
 		ServiceRegistry registry= new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
 		SessionFactory sessionFactory= configuration.buildSessionFactory(registry);
-		//Sesión
 		Session session= sessionFactory.openSession();
 		session.beginTransaction();
-		//Menu
+		
+		Boolean encontrado=false;
+		System.out.println("\nIntroduce un ID para borrar el registro \n");
+		BufferedReader sc=new BufferedReader(new InputStreamReader(System.in));				
+		Integer id;
+		try {
+			id = Integer.parseInt(sc.readLine());
+			List listaLibros = new ArrayList();
+			listaLibros=session.createQuery("FROM Libro").list();
+			for(Object obj : listaLibros) {
+				Libro li=(Libro)obj;
+				if(li.getId()==id)encontrado=true;
+			}
+			session.getTransaction().commit();
+			session.close();
+			//he tenido que cerrar la sesión y volver a abrirla por el error:
+			//"A different object with the same identifier value was already associated with the session"
+			
+			if(encontrado==false) System.err.println("No existe un libro con el ID indicado.");
+			else {
+				Configuration configuration2= new Configuration().configure("hibernate.cfg.xml");
+				configuration2.addClass(Libro.class);
+				ServiceRegistry registry2= new StandardServiceRegistryBuilder().applySettings(configuration2.getProperties()).build();
+				SessionFactory sessionFactory2= configuration2.buildSessionFactory(registry2);
+				Session session2= sessionFactory2.openSession();
+				session2.beginTransaction();
+				
+				Libro libro = new Libro();
+				libro.setId(id);
+				session2.delete(libro);
+				
+				session2.getTransaction().commit();
+				session2.close();
+			}
+			}catch (Exception e) { e.printStackTrace();}
+		System.out.println("Libro eliminado correctamente\n");
+	}
+	
+	
+	public static void main(String[] args) {
+		Boolean menu=true;
 		BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
 		while(menu) {
 			System.out.println("::::Gestión de Biblioteca::::");
@@ -174,22 +241,23 @@ public class Main {
 				switch(resp) {
 				case "1":
 					System.out.println("\nMostrando librería...");
-					mostrarLibros(session);
+					mostrarLibros();
 					break;
 				case "2":
-					mostrarLibro(session);
+					mostrarLibro();
 					break;
 				case "3":
-					crearLibro(session);
+					crearLibro();
 					break;
 				case "4":
-					
+					actualizarLibro();
 					break;
 				case "5":
-					
+					borrarLibro();
 					break;
 				case "6":
 					System.err.println("Saliendo del sistema...");
+					//session.close();
 					menu=false;
 					break;
 				default:
