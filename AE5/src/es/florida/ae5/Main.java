@@ -20,8 +20,8 @@ public class Main {
 	public static void mostrarLibros() {
 		/**
 		 * Nombre: mostrarLibros
-		 * Parámetro de entrada: un objeto de tipo Session
 		 * Descripción: Imprime por consola el valor de las columnas ID y Título de todos los elementos de la tabla.
+		 * Sin parámetros de entrada/salida
 		 */
 		Configuration configuration= new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Libro.class);
@@ -36,15 +36,15 @@ public class Main {
 			Libro li=(Libro)obj;
 			System.out.println("ID: "+li.getId()+" Título: "+li.getTitulo());
 		}
-		System.out.println("Volviendo al menú principal...\n");
+		System.out.println("\nVolviendo al menú principal...\n");
 		session.close();
 	}
 
 	public static void mostrarLibro() {
 		/**
 		 * Nombre: mostrarLibro
-		 * Parámetro de entrada: un objeto de tipo Session
 		 * Descripción: Solicita al usuario un ID de libro, comprueba que existe y muestra por pantalla la información del mismo.
+		 * Sin parámetros de entrada/salida
 		 */
 		Configuration configuration= new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Libro.class);
@@ -70,15 +70,15 @@ public class Main {
 			}catch (Exception e) {
 				e.printStackTrace();
 			}	
-			System.err.println("Volviendo al menú principal...\n");
+			System.err.println("\nVolviendo al menú principal...\n");
 			session.close();
 		}
 	
 	public static void crearLibro() {
 		/**
 		 * Nombre: crearLibro
-		 * Parámetro de entrada: un objeto de tipo Session
 		 * Descripción: Recoge los datos introducidos por el usuario, crea un objeto de tipo Libro y lo inserta en la tabla libros
+		 * Sin parámetros de entrada/salida
 		 */
 		Configuration configuration= new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Libro.class);
@@ -164,7 +164,7 @@ public class Main {
 				li.setPaginas(paginas);
 				li.setFecha_publicacion(anyo);
 				session.update(li);
-				System.out.println("Libro actualizado!!");
+				System.out.println("\n¡Libro actualizado!\n");
 			}
 			
 		} catch (NumberFormatException | IOException e) { e.printStackTrace(); }
@@ -203,7 +203,7 @@ public class Main {
 			//he tenido que cerrar la sesión y volver a abrirla por el error:
 			//"A different object with the same identifier value was already associated with the session"
 			
-			if(encontrado==false) System.err.println("No existe un libro con el ID indicado.");
+			if(encontrado==false) System.err.println("No existe un libro con el ID indicado.\n");
 			else {
 				Configuration configuration2= new Configuration().configure("hibernate.cfg.xml");
 				configuration2.addClass(Libro.class);
@@ -220,7 +220,7 @@ public class Main {
 				session2.close();
 			}
 			}catch (Exception e) { e.printStackTrace();}
-		System.out.println("Libro eliminado correctamente\n");
+		System.out.println("\nLibro eliminado correctamente\n");
 	}
 	
 	
@@ -256,7 +256,7 @@ public class Main {
 					borrarLibro();
 					break;
 				case "6":
-					System.err.println("Saliendo del sistema...");
+					System.err.println("\nSaliendo del sistema...");
 					//session.close();
 					menu=false;
 					break;
