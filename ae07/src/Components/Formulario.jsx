@@ -64,7 +64,7 @@ const Formulario = () => {
 
     fetch("http://localhost/api/script.php", requestOptions)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result => alert("Datos enviados correctamente"))
       .catch(error => console.log('error', error));
   }
 
