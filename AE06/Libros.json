@@ -1,0 +1,143 @@
+[{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b55"
+  },
+  "Id": "2",
+  "Titulo": "El juego de Ender",
+  "Autor": "Orson Scott Card",
+  "Nacimiento": "1951",
+  "Publicacion": "1977",
+  "Editorial": "Ediciones B",
+  "Paginas": "509"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b56"
+  },
+  "Id": "3",
+  "Titulo": "Lazarillo de Tormes",
+  "Autor": "Anonimo",
+  "Publicacion": "1554",
+  "Editorial": "Clasicos Populares",
+  "Paginas": "150"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b57"
+  },
+  "Id": "4",
+  "Titulo": "Las uvas de la ira",
+  "Autor": "John Steinbeck",
+  "Nacimiento": "1902",
+  "Publicacion": "1939",
+  "Editorial": "Alianza",
+  "Paginas": "619"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b58"
+  },
+  "Id": "5",
+  "Titulo": "Watchmen",
+  "Autor": "Alan Moore",
+  "Nacimiento": "1953",
+  "Publicacion": "1980",
+  "Editorial": "ECC",
+  "Paginas": "416"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b59"
+  },
+  "Id": "6",
+  "Titulo": "La hoguera de las vanidades",
+  "Autor": "Tom Wolfe",
+  "Nacimiento": "1930",
+  "Publicacion": "1980",
+  "Editorial": "Anagrama",
+  "Paginas": "636"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b5a"
+  },
+  "Id": "7",
+  "Titulo": "La familia de Pascual Duarte",
+  "Autor": "Camilo Jose Cela",
+  "Nacimiento": "1916",
+  "Publicacion": "1942",
+  "Editorial": "Destino",
+  "Paginas": "165"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b5b"
+  },
+  "Id": "8",
+  "Titulo": "El senor de las moscas",
+  "Autor": "William Golding",
+  "Nacimiento": "1911",
+  "Publicacion": "1972",
+  "Editorial": "Alianza",
+  "Paginas": "236"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b5c"
+  },
+  "Id": "9",
+  "Titulo": "La ciudad de los prodigios",
+  "Autor": "Eduardo Mendoza",
+  "Nacimiento": "1943",
+  "Publicacion": "1986",
+  "Editorial": "Seix Barral",
+  "Paginas": "541"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b5d"
+  },
+  "Id": "10",
+  "Titulo": "Ensayo sobre la ceguera",
+  "Autor": "Jose Saramago",
+  "Nacimiento": "1922",
+  "Publicacion": "1995",
+  "Editorial": "Santillana",
+  "Paginas": "439"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b5e"
+  },
+  "Id": "11",
+  "Titulo": "Los surcos del azar",
+  "Autor": "Paco Roca",
+  "Nacimiento": "1969",
+  "Publicacion": "2013",
+  "Editorial": "Astiberri",
+  "Paginas": "349"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b5f"
+  },
+  "Id": "12",
+  "Titulo": "Ghosts of Spain",
+  "Autor": "Giles Tremlett",
+  "Nacimiento": "1962",
+  "Publicacion": "2006",
+  "Editorial": "Faber & Faber",
+  "Paginas": "468"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b60"
+  },
+  "Id": "13",
+  "Titulo": "Sidi",
+  "Autor": "Arturo Perez Reverte",
+  "Nacimiento": "1951",
+  "Publicacion": "2019",
+  "Editorial": "Penguin",
+  "Paginas": "369"
+},{
+  "_id": {
+    "$oid": "61ccd0f252526100c3a51b61"
+  },
+  "Id": "14",
+  "Titulo": "Dune",
+  "Autor": "Frank Herbert",
+  "Nacimiento": "1920",
+  "Publicacion": "1965",
+  "Editorial": "Acervo",
+  "Paginas": "741"
+}]
