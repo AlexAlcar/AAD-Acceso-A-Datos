@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<juegos>
+    <juego>
+        <titulo>Los Sims</titulo>
+        <genero>Simulación</genero>
+        <plataforma>PC</plataforma>
+    </juego>
+    <juego>
+        <titulo>Doom</titulo>
+        <genero>Shooter</genero>
+        <plataforma>PC</plataforma>
+    </juego>
+    <juego>
+        <titulo>Metal Gear Solid</titulo>
+        <genero>Acción</genero>
+        <plataforma>Playstation</plataforma>
+    </juego>
+    <juego>
+        <titulo>j1</titulo>
+        <genero>g1</genero>
+        <plataforma>p1</plataforma>
+    </juego>
+</juegos>

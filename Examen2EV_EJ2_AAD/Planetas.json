@@ -1,0 +1,64 @@
+[{
+  "_id": {
+    "$oid": "620a75b51ff1d11857b28851"
+  },
+  "distanciaSol": 57,
+  "gravedad": 3.7,
+  "lunas": 0,
+  "periodoOrbital": 88,
+  "nombrePlaneta": "Mercurio"
+},{
+  "_id": {
+    "$oid": "620a75b51ff1d11857b28852"
+  },
+  "distanciaSol": 108,
+  "gravedad": 8.9,
+  "lunas": 1,
+  "periodoOrbital": 224,
+  "nombrePlaneta": "Venus"
+},{
+  "_id": {
+    "$oid": "620a75b51ff1d11857b28854"
+  },
+  "distanciaSol": 227,
+  "gravedad": 3.7,
+  "lunas": 2,
+  "periodoOrbital": 687,
+  "nombrePlaneta": "Marte"
+},{
+  "_id": {
+    "$oid": "620a75b51ff1d11857b28855"
+  },
+  "distanciaSol": 778,
+  "gravedad": 23.1,
+  "lunas": 79,
+  "periodoOrbital": 4331,
+  "nombrePlaneta": "Jupiter"
+},{
+  "_id": {
+    "$oid": "620a75b51ff1d11857b28856"
+  },
+  "distanciaSol": 1433,
+  "gravedad": 9,
+  "lunas": 62,
+  "periodoOrbital": 10747,
+  "nombrePlaneta": "Saturno"
+},{
+  "_id": {
+    "$oid": "620a75b51ff1d11857b28857"
+  },
+  "distanciaSol": 2872,
+  "gravedad": 8.7,
+  "lunas": 27,
+  "periodoOrbital": 30589,
+  "nombrePlaneta": "Urano"
+},{
+  "_id": {
+    "$oid": "620a75b51ff1d11857b28858"
+  },
+  "distanciaSol": 4495,
+  "gravedad": 11,
+  "lunas": 14,
+  "periodoOrbital": 59800,
+  "nombrePlaneta": "Neptuno"
+}]

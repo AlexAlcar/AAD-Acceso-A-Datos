@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<animales>
+	<animal id="1">
+		<especie>Perro</especie>
+		<raza>Podenco</raza>
+		<color>Marrón</color>
+		<nombre>Miko</nombre>
+	</animal>
+	<animal id="2">
+		<especie>Gato</especie>
+		<raza>Persa</raza>
+		<color>Blanco</color>
+		<nombre>Missi</nombre>
+	</animal>
+	<animal id="3">
+		<especie>Tortuga</especie>
+		<raza>Tortuga Enana</raza>
+		<color>Marrón</color>
+		<nombre>Tortu</nombre>
+	</animal>
+
+
+
+</animales>

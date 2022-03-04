@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<animales>
+    <animal>
+        <especie>Perro</especie>
+        <raza>Podenco</raza>
+        <color>Marrón</color>
+        <nombre>Miko</nombre>
+    </animal>
+    <animal>
+        <especie>Gato</especie>
+        <raza>Persa</raza>
+        <color>Blanco</color>
+        <nombre>Missi</nombre>
+    </animal>
+    <animal>
+        <especie>Tortuga</especie>
+        <raza>Tortuga Enana</raza>
+        <color>Marrón</color>
+        <nombre>Tortu</nombre>
+    </animal>
+    <animal>
+        <especie>caballo</especie>
+        <raza>purasangre</raza>
+        <color>negro</color>
+        <nombre>pepito</nombre>
+    </animal>
+</animales>
